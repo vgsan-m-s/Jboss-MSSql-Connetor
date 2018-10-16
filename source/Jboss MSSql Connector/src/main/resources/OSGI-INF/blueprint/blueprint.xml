@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.osgi.org/xmlns/blueprint/v1.0.0 https://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd                            http://camel.apache.org/schema/blueprint http://camel.apache.org/schema/blueprint/camel-blueprint.xsd">
+    <bean class="com.db.service.DatabaseProcessor" id="sqlTransform"/>
+    <camelContext id="_context1" xmlns="http://camel.apache.org/schema/blueprint">
+        <route id="SentEndbatch">
+            <!--  <log id="L22" message="${body}"/> -->
+            <from id="fromInput" uri="file:{{pathToInputSource}}?delete=true"/>
+            <setHeader headerName="outputFilename" id="headerOutFilenameOut">
+                <simple>OUT/${file:onlyname.noext.single}_${date:now:yyyyMMddHHmmssSSS}.${file:name.ext.single}</simple>
+            </setHeader>
+            <process id="PFATSCT_01" ref="sqlTransform"/>
+            <log id="L11" message="Send file to ATSCT Output folder!"/>
+            <to id="output" uri="file:{{pathToOutputSource}}?fileName=${header.outputFilename}"/>
+            <log id="dome" message="Data Retrieved..."/>
+        </route>
+    </camelContext>
+</blueprint>
