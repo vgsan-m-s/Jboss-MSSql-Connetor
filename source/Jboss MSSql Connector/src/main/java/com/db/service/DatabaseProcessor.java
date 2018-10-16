@@ -28,7 +28,7 @@ public class DatabaseProcessor implements Processor {
 	public static void getWorkOrderDetails(String woID) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 				
 		// Create a variable for the connection string.
-        String connectionUrl = "jdbc:sqlserver://LKH2VS1015:1433;databaseName=TestGrid;user=sa;password=Password$";
+        String connectionUrl = "jdbc:sqlserver://<servername>:1433;databaseName=<databasename>;user=sa;password=<password>";
         SQLServerDriver driver = new SQLServerDriver();
         
         try (Connection con = DriverManager.getConnection(connectionUrl); Statement stmt = con.createStatement();) {
