@@ -9,10 +9,12 @@
             <setHeader headerName="outputFilename" id="headerOutFilenameOut">
                 <simple>OUT/${file:onlyname.noext.single}_${date:now:yyyyMMddHHmmssSSS}.${file:name.ext.single}</simple>
             </setHeader>
+            <setHeader headerName="dbConString" id="headerDbConString">
+                <simple>{{dbConString}}</simple>
+            </setHeader>
             <process id="PFATSCT_01" ref="sqlTransform"/>
-            <log id="L11" message="Send file to ATSCT Output folder!"/>
             <to id="output" uri="file:{{pathToOutputSource}}?fileName=${header.outputFilename}"/>
-            <log id="dome" message="Data Retrieved..."/>
+            <log id="done" message="Done..."/>
         </route>
     </camelContext>
 </blueprint>

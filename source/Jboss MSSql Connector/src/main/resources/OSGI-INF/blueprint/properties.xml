@@ -6,6 +6,7 @@
         <cm:default-properties>                    
             <cm:property name="pathToInputSource" value="D:/Suthakar/JBoss/ATSCoreTransformation/TEST_DATA/INPUT"/> 
             <cm:property name="pathToOutputSource" value="D:/Suthakar/JBoss/ATSCoreTransformation/TEST_DATA/OUTPUT"/>   
+            <cm:property name="dbConString" value="jdbc:sqlserver://LKH2VS1015:1433;databaseName=TestGrid;user=sa;password=Password$"/>   
         </cm:default-properties>
     </cm:property-placeholder>
 </blueprint>
